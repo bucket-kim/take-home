@@ -1,0 +1,10 @@
+.page03 {
+  height: 100%;
+  width: 100%;
+
+  h1 {
+    position: absolute;
+    top: 250vh;
+    left: 50%;
+  }
+}
