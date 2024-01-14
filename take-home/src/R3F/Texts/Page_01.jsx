@@ -1,14 +1,16 @@
-import React, { memo } from "react";
+import React, { Fragment, memo } from "react";
 import "./Page_01.css";
 
 const Page_01 = () => {
   return (
-    <div className="page01">
-      <div className="text">
-        <h1>This is the story of</h1>
-        <h1>BRIAN KIM</h1>
+    <Fragment>
+      <div className="page01">
+        <div className="text">
+          <h1>The Journey of </h1>
+          <h1>Brian Kim</h1>
+        </div>
       </div>
-    </div>
+    </Fragment>
   );
 };
 

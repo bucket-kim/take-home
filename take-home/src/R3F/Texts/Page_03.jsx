@@ -4,7 +4,10 @@ import "./Page_03.css";
 const Page_03 = () => {
   return (
     <div className="page03">
-      <h1>Page_03</h1>
+      <div className="text">
+        <h1>Pieces of paper? Clean wall?</h1>
+        <h1>Those are just an empty canvas</h1>
+      </div>
     </div>
   );
 };

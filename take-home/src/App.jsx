@@ -7,7 +7,13 @@ import Experience from "./R3F/Experience/Experience";
 
 function App() {
   return (
-    <Canvas camera={{ position: [3, 3, 3] }}>
+    <Canvas
+      orthographic
+      camera={{ zoom: 80 }}
+      gl={{ alpha: false, antialias: false, stencil: false, depth: false }}
+      dpr={[1, 1.5]}
+    >
+      <color attach={"background"} args={["#ffffff"]} />
       <Experience />
     </Canvas>
   );

@@ -2,9 +2,10 @@
   height: 100%;
   width: 100%;
 
-  h1 {
-    position: absolute;
-    top: 150vh;
-    left: 50%;
+  .text {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

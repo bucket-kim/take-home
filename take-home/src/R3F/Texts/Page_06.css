@@ -2,9 +2,11 @@
   height: 100%;
   width: 100%;
 
-  h1 {
-    position: absolute;
-    top: 550vh;
-    left: 50%;
+  .text {
+    height: 100vh;
+    background-color: rgb(30, 111, 165);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

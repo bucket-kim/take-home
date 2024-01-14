@@ -1,9 +1,10 @@
-.page03 {
+.page12 {
   height: 100%;
   width: 100%;
 
   .text {
     height: 100vh;
+    background-color: rgb(188, 204, 215);
     display: flex;
     align-items: center;
     justify-content: center;
