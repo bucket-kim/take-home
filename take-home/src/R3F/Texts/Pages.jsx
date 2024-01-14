@@ -1,5 +1,5 @@
-import { Scroll } from "@react-three/drei";
-import React from "react";
+import { Html, Scroll } from "@react-three/drei";
+import React, { Fragment, useRef } from "react";
 import Page_01 from "./Page_01";
 import Page_02 from "./Page_02";
 import Page_03 from "./Page_03";
@@ -23,28 +23,30 @@ import Page_20 from "./Page_20";
 
 const Pages = () => {
   return (
-    <Scroll html style={{ width: "100%", color: "black" }}>
-      <Page_01 />
-      <Page_02 />
-      <Page_03 />
-      <Page_04 />
-      <Page_05 />
-      <Page_06 />
-      <Page_07 />
-      <Page_08 />
-      <Page_09 />
-      <Page_10 />
-      <Page_11 />
-      <Page_12 />
-      <Page_13 />
-      <Page_14 />
-      <Page_15 />
-      <Page_16 />
-      <Page_17 />
-      <Page_18 />
-      <Page_19 />
-      <Page_20 />
-    </Scroll>
+    <Fragment>
+      <Scroll html style={{ width: "100%", color: "black" }}>
+        <Page_01 />
+        <Page_02 />
+        <Page_03 />
+        <Page_04 />
+        <Page_05 />
+        <Page_06 />
+        <Page_07 />
+        <Page_08 />
+        <Page_09 />
+        <Page_10 />
+        <Page_11 />
+        <Page_12 />
+        <Page_13 />
+        <Page_14 />
+        <Page_15 />
+        <Page_16 />
+        <Page_17 />
+        <Page_18 />
+        <Page_19 />
+        <Page_20 />
+      </Scroll>
+    </Fragment>
   );
 };
 
