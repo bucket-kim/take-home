@@ -32,9 +32,11 @@ const Clay = (props) => {
 
   const strengthRef = useRef(0.25);
 
-  useFrame(({ clock, delta }) => {
-    const t = clock.getElapsedTime() / 2;
+  useFrame((state) => {
+    const t = state.clock.getElapsedTime() / 2;
     const strength = strengthRef.current;
+
+    if (!sphereRef.current) return;
     sphereRef.current.geometry.positionData.forEach((p, idx) => {
       let setNoise = noise(p.x * strength, p.y * strength, p.z * strength, t);
       v3.copy(p).addScaledVector(p, setNoise);
@@ -45,6 +47,7 @@ const Clay = (props) => {
         v3.z
       );
     });
+
     sphereRef.current.geometry.computeVertexNormals();
     sphereRef.current.geometry.attributes.position.needsUpdate = true;
   });
@@ -72,7 +75,7 @@ const Clay = (props) => {
         onPointerEnter={handlePointerHandle}
         onPointerOut={handlePointerOutHandle}
       >
-        <sphereGeometry args={[3, 100, 100]} />
+        <sphereGeometry args={[3, 50, 50]} />
         <shaderMaterial
           uniforms={uniforms}
           vertexShader={vertexShader}

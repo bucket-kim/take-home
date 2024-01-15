@@ -5,7 +5,7 @@ import Items from "../Items/Items";
 
 const Experience = () => {
   return (
-    <ScrollControls damping={0.1} pages={20}>
+    <ScrollControls damping={0.1} pages={17}>
       <Items />
       <Pages />
     </ScrollControls>

@@ -5,7 +5,7 @@ const Page_12 = () => {
   return (
     <div className="page12">
       <div className="text">
-        <h1>Given a chance to showcase his creativity</h1>
+        <h1>Showcase creativity</h1>
         <h1>in a TECH world</h1>
       </div>
     </div>

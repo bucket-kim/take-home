@@ -35,12 +35,9 @@ const Pages = () => {
         <Page_08 />
         <Page_09 />
         <Page_10 />
-        <Page_11 />
         <Page_12 />
-        <Page_13 />
         <Page_14 />
         <Page_15 />
-        <Page_16 />
         <Page_17 />
         <Page_18 />
         <Page_19 />
