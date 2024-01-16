@@ -1,9 +1,12 @@
 import * as THREE from "three";
-import React, { memo, useMemo, useRef } from "react";
+import React, { memo, useEffect, useMemo, useRef } from "react";
 import { SoftShadows, useGLTF, useTexture } from "@react-three/drei";
+import { useFrame, useThree } from "@react-three/fiber";
 
 const AvatarHead = (props) => {
   const { nodes } = useGLTF("/models/head.glb");
+
+  const { width: w, height: h } = useThree((state) => state.viewport);
 
   const avatarMap = useTexture("/textures/head_BaseColor.png");
   const avatarMatMap = useTexture("/textures/head_Metallic.png");
@@ -23,41 +26,50 @@ const AvatarHead = (props) => {
     });
   }, []);
 
+  const headRef = useRef();
+
+  useFrame(({ clock }) => {
+    const t = clock.getElapsedTime();
+    headRef.current.rotation.z = Math.sin(t * 2) * 0.05;
+  });
+
   return (
     <group {...props} dispose={null}>
-      <mesh
-        name="eggy_head"
-        castShadow
-        receiveShadow
-        geometry={nodes.eggy_head.geometry}
-        material={AvatarMaterial}
-        position={[0, 1.1233639717, 0.0418835282]}
-        userData={{ name: "eggy_head" }}
-        frustumCulled={true}
-      />
-      <mesh
-        name="hat"
-        castShadow
-        receiveShadow
-        geometry={nodes.hat.geometry}
-        material={AvatarMaterial}
-        position={[0, 1.1233639717, 0.0418835282]}
-        userData={{ name: "hat" }}
-        frustumCulled={false}
-      />
+      <group ref={headRef}>
+        <mesh
+          name="eggy_head"
+          castShadow
+          receiveShadow
+          geometry={nodes.eggy_head.geometry}
+          material={AvatarMaterial}
+          position={[0, 1.1233639717, 0.0418835282]}
+          userData={{ name: "eggy_head" }}
+          frustumCulled={true}
+        />
+        <mesh
+          name="hat"
+          castShadow
+          receiveShadow
+          geometry={nodes.hat.geometry}
+          material={AvatarMaterial}
+          position={[0, 1.1233639717, 0.0418835282]}
+          userData={{ name: "hat" }}
+          frustumCulled={false}
+        />
 
+        <mesh
+          name="hair"
+          castShadow
+          receiveShadow
+          geometry={nodes.hair.geometry}
+          material={AvatarMaterial}
+          position={[0, 1.1233639717, 0.0418835282]}
+          userData={{ name: "hair" }}
+          frustumCulled={true}
+        />
+      </group>
       <mesh
-        name="hair"
-        castShadow
-        receiveShadow
-        geometry={nodes.hair.geometry}
-        material={AvatarMaterial}
-        position={[0, 1.1233639717, 0.0418835282]}
-        userData={{ name: "hair" }}
-        frustumCulled={true}
-      />
-      <mesh
-        position={[0, 1, 0]}
+        position={[0, 0.8, 0]}
         rotation={[-1.5, 0, 0]}
         scale={2}
         receiveShadow

@@ -42,13 +42,13 @@ const Drawings = (props) => {
 
   return (
     <group {...props}>
-      <group scale={4} position={[5, -7, 0]} rotation={[0, 0, -0.5]}>
-        <Plane material={mat1} scale={[2, 1.5, 0]} castShadow />
-      </group>
-      <group scale={w / 2.5} position={[0, 3, 0]} rotation={[0, 0, 0]}>
+      <group scale={4.5} position={[w / -5, 3.5, -10]} rotation={[0, 0, 0]}>
         <Plane material={mat2} scale={[3, 1.5, 0]} castShadow />
       </group>
-      <group position={[-4, -6, 0]} scale={4} rotation={[0, 0, 0.25]}>
+      <group scale={w / 8} position={[0, -2.5, -10]} rotation={[0, 0, -0.5]}>
+        <Plane material={mat1} scale={[2, 1.5, 0]} castShadow />
+      </group>
+      <group position={[-7.5, -3, -10.5]} scale={4} rotation={[0, 0, 0.25]}>
         <Plane material={mat3} scale={[2, 1.5, 0]} castShadow />
       </group>
     </group>

@@ -7,11 +7,12 @@ Source: https://sketchfab.com/3d-models/simple-crayon-1b6548493a5f4c75a585df0c94
 Title: Simple Crayon
 */
 
-import React, { memo, useMemo, useRef } from "react";
+import React, { forwardRef, memo, useEffect, useMemo, useRef } from "react";
 import { useGLTF, useTexture } from "@react-three/drei";
 import * as THREE from "three";
+import gsap from "gsap";
 
-const Crayon = (props) => {
+const Crayon = forwardRef((props, ref) => {
   const { nodes } = useGLTF("/models/crayon-transformed.glb");
 
   const crayonMap = useTexture(`${props.texture}`);
@@ -25,20 +26,21 @@ const Crayon = (props) => {
   }, []);
 
   return (
-    <group {...props} dispose={null}>
+    <group {...props} dispose={null} ref={ref}>
       <mesh
         name="Object_2"
         castShadow
         receiveShadow
         geometry={nodes.Object_2.geometry}
         material={crayonMat}
-        rotation={[-Math.PI / 2, Math.PI, 0]}
-        scale={0.4878318012}
+        rotation={[Math.PI / 2, 0, 0]}
+        scale={0.5}
         userData={{ name: "Object_2" }}
+        onPointerDown={props.handleDown}
       />
     </group>
   );
-};
+});
 
 export default memo(Crayon);
 

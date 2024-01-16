@@ -7,134 +7,165 @@ Source: https://sketchfab.com/3d-models/a-low-poly-plane-9e64617a0c8e49a5b76d2b3
 Title: A low poly plane
 */
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useGLTF } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
+import gsap from "gsap";
 
 const AirPlane = (props) => {
   const { nodes, materials } = useGLTF("/models/plane-transformed.glb");
+  const propellerRef = useRef();
+  const planeRef = useRef();
+
+  useFrame(({ clock }) => {
+    const t = clock.getElapsedTime();
+    propellerRef.current.rotation.z = t * 8;
+  });
+
+  const tl = gsap.timeline({ paused: true, repeat: -1 });
+  useEffect(() => {
+    tl.fromTo(
+      planeRef.current.scale,
+      {
+        x: 0,
+        y: 0,
+        z: 0,
+      },
+      { x: 0.5, y: 0.5, z: 0.5, delay: 1 }
+    )
+      .fromTo(
+        planeRef.current.position,
+        { x: -4, y: -0.5 },
+        {
+          x: 7.5,
+          duration: 5,
+          ease: "power1.inOut",
+          overwrite: true,
+        }
+      )
+      .to(planeRef.current.scale, {
+        x: 0,
+        y: 0,
+        z: 0,
+      });
+    tl.play();
+  }, []);
+
   return (
-    <group {...props} dispose={null}>
-      <group
-        name="Cube018_0"
-        position={[0, 0, -3.1612734795]}
-        userData={{ name: "Cube.018_0" }}
-      >
-        <mesh
-          name="Object_4"
-          castShadow
-          receiveShadow
-          geometry={nodes.Object_4.geometry}
-          material={materials["Material.001"]}
-          userData={{ name: "Object_4" }}
-        />
-        <mesh
-          name="Object_5"
-          castShadow
-          receiveShadow
-          geometry={nodes.Object_5.geometry}
-          material={materials["Material.021"]}
-          userData={{ name: "Object_5" }}
-        />
-        <mesh
-          name="Object_6"
-          castShadow
-          receiveShadow
-          geometry={nodes.Object_6.geometry}
-          material={materials["Material.022"]}
-          userData={{ name: "Object_6" }}
-        />
-        <mesh
-          name="Object_7"
-          castShadow
-          receiveShadow
-          geometry={nodes.Object_7.geometry}
-          material={materials["Material.023"]}
-          userData={{ name: "Object_7" }}
-        />
-        <mesh
-          name="Object_8"
-          castShadow
-          receiveShadow
-          geometry={nodes.Object_8.geometry}
-          material={materials["Material.024"]}
-          userData={{ name: "Object_8" }}
-        />
-        <mesh
-          name="Object_9"
-          castShadow
-          receiveShadow
-          geometry={nodes.Object_9.geometry}
-          material={materials["Material.025"]}
-          userData={{ name: "Object_9" }}
-        />
-      </group>
-      <group
-        name="Cylinder_1"
-        position={[0.1859868169, -0.4565131068, -2.569999218]}
+    <group {...props} dispose={null} ref={planeRef}>
+      <mesh
+        name="Object_4"
+        castShadow
+        geometry={nodes.Object_4.geometry}
+        material={materials["Material.001"]}
+        userData={{ name: "Object_4" }}
+      />
+      <mesh
+        name="Object_5"
+        castShadow
+        geometry={nodes.Object_5.geometry}
+        material={materials["Material.021"]}
+        userData={{ name: "Object_5" }}
+      />
+      <mesh
+        name="Object_6"
+        castShadow
+        geometry={nodes.Object_6.geometry}
+        material={materials["Material.022"]}
+        userData={{ name: "Object_6" }}
+      />
+      <mesh
+        name="Object_7"
+        castShadow
+        geometry={nodes.Object_7.geometry}
+        material={materials["Material.023"]}
+        userData={{ name: "Object_7" }}
+      />
+      <mesh
+        name="Object_8"
+        castShadow
+        geometry={nodes.Object_8.geometry}
+        material={materials["Material.024"]}
+        userData={{ name: "Object_8" }}
+      />
+      <mesh
+        name="Object_9"
+        castShadow
+        geometry={nodes.Object_9.geometry}
+        material={materials["Material.025"]}
+        userData={{ name: "Object_9" }}
+      />
+      <mesh
+        name="Object_11"
+        castShadow
+        geometry={nodes.Object_11.geometry}
+        material={materials["Material.023"]}
+        position={[0.1859868318, -0.4565131068, 0.6842930317]}
         rotation={[0, 0, -Math.PI / 2]}
-        scale={0.6325716972}
-        userData={{ name: "Cylinder_1" }}
-      >
-        <mesh
-          name="Object_11"
-          castShadow
-          receiveShadow
-          geometry={nodes.Object_11.geometry}
-          material={materials["Material.023"]}
-          userData={{ name: "Object_11" }}
-        />
-        <mesh
-          name="Object_12"
-          castShadow
-          receiveShadow
-          geometry={nodes.Object_12.geometry}
-          material={materials["Material.025"]}
-          userData={{ name: "Object_12" }}
-        />
-        <mesh
-          name="Object_13"
-          castShadow
-          receiveShadow
-          geometry={nodes.Object_13.geometry}
-          material={materials["Material.025"]}
-          userData={{ name: "Object_13" }}
-        />
-        <mesh
-          name="Object_14"
-          castShadow
-          receiveShadow
-          geometry={nodes.Object_14.geometry}
-          material={materials["Material.032"]}
-          userData={{ name: "Object_14" }}
-        />
-        <mesh
-          name="Object_15"
-          castShadow
-          receiveShadow
-          geometry={nodes.Object_15.geometry}
-          material={materials["Material.032"]}
-          userData={{ name: "Object_15" }}
-        />
-        <mesh
-          name="Object_16"
-          castShadow
-          receiveShadow
-          geometry={nodes.Object_16.geometry}
-          material={materials["Material.025"]}
-          userData={{ name: "Object_16" }}
-        />
-      </group>
+        scale={[0.6325716376, 0.6325716376, 0.6325716972]}
+        userData={{ name: "Object_11" }}
+      />
+      <mesh
+        name="Object_12"
+        castShadow
+        geometry={nodes.Object_12.geometry}
+        material={materials["Material.025"]}
+        position={[0.1859868318, -0.4565131068, 0.6842930317]}
+        rotation={[0, 0, -Math.PI / 2]}
+        scale={[0.6325716376, 0.6325716376, 0.6325716972]}
+        userData={{ name: "Object_12" }}
+      />
+      <mesh
+        name="Object_13"
+        castShadow
+        geometry={nodes.Object_13.geometry}
+        material={materials["Material.025"]}
+        position={[0.1859868318, -0.4565131068, 0.6842930317]}
+        rotation={[0, 0, -Math.PI / 2]}
+        scale={[0.6325716376, 0.6325716376, 0.6325716972]}
+        userData={{ name: "Object_13" }}
+      />
+      <mesh
+        name="Object_14"
+        castShadow
+        geometry={nodes.Object_14.geometry}
+        material={materials["Material.032"]}
+        position={[0.1859868318, -0.4565131068, 0.6842930317]}
+        rotation={[0, 0, -Math.PI / 2]}
+        scale={[0.6325716376, 0.6325716376, 0.6325716972]}
+        userData={{ name: "Object_14" }}
+      />
+      <mesh
+        name="Object_15"
+        castShadow
+        geometry={nodes.Object_15.geometry}
+        material={materials["Material.032"]}
+        position={[0.1859868318, -0.4565131068, 0.6842930317]}
+        rotation={[0, 0, -Math.PI / 2]}
+        scale={[0.6325716376, 0.6325716376, 0.6325716972]}
+        userData={{ name: "Object_15" }}
+      />
+      <mesh
+        name="Object_16"
+        castShadow
+        geometry={nodes.Object_16.geometry}
+        material={materials["Material.025"]}
+        position={[0.1859868318, -0.4565131068, 0.6842930317]}
+        rotation={[0, 0, -Math.PI / 2]}
+        scale={[0.6325716376, 0.6325716376, 0.6325716972]}
+        userData={{ name: "Object_16" }}
+      />
       <group
         name="Plane_2"
-        position={[0, 0.1867115796, -1.7686932087]}
+        position={[0, 0.1867115796, 1.4]}
         rotation={[0, 0, -Math.PI / 4]}
         scale={[0.6599159241, 0.6599159241, 0.180331856]}
         userData={{ name: "Plane_2" }}
+        ref={propellerRef}
       >
         <mesh
           name="Object_18"
           castShadow
-          receiveShadow
           geometry={nodes.Object_18.geometry}
           material={materials["Material.023"]}
           userData={{ name: "Object_18" }}
@@ -142,7 +173,6 @@ const AirPlane = (props) => {
         <mesh
           name="Object_19"
           castShadow
-          receiveShadow
           geometry={nodes.Object_19.geometry}
           material={materials["Material.027"]}
           userData={{ name: "Object_19" }}
@@ -150,7 +180,6 @@ const AirPlane = (props) => {
         <mesh
           name="Object_20"
           castShadow
-          receiveShadow
           geometry={nodes.Object_20.geometry}
           material={materials["Material.028"]}
           userData={{ name: "Object_20" }}
