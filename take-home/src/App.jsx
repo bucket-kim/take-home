@@ -8,6 +8,8 @@ import HeaderImage from "./R3F/HeaderImage";
 import Lighting from "./R3F/Lighting";
 import { OrbitControls } from "@react-three/drei";
 
+console.log("built by brian kim");
+
 function App() {
   return (
     <Fragment>
