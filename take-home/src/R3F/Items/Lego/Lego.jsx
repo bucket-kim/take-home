@@ -4,7 +4,7 @@ Command: npx gltfjsx@6.1.4 public/models/lego.glb --transform --precision=10 --s
 */
 
 import React, { memo, useMemo, useRef, useState } from "react";
-import { Float, useGLTF, useTexture } from "@react-three/drei";
+import { Float, Text, useGLTF, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import gsap from "gsap";
 
@@ -77,6 +77,17 @@ const Lego = (props) => {
   return (
     <Float>
       <group {...props} dispose={null} position-z={-5}>
+        <Text
+          color="#afafaf"
+          anchorX="center"
+          anchorY="middle"
+          // rotation-y={Math.PI}
+          position-y={4.5}
+          font="/Inter-Bold.woff"
+          scale={0.2}
+        >
+          Toggle Me
+        </Text>
         <group
           name="Legoobjcleaner"
           rotation={[-Math.PI / 2, 0, Math.PI]}

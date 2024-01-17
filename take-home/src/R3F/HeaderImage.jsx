@@ -44,6 +44,8 @@ const HeaderImage = () => {
         src="/public/Image/ViteLogo.png"
         alt=""
         className="header-logo"
+        onPointerDown={handlePoiterUp}
+        onPointerUp={handlePoiterOut}
         onPointerOver={handlePoiterUp}
         onPointerOut={handlePoiterOut}
       />

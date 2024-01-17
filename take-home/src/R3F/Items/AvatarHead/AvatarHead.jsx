@@ -2,6 +2,7 @@ import * as THREE from "three";
 import React, { memo, useEffect, useMemo, useRef } from "react";
 import { SoftShadows, useGLTF, useTexture } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
+import gsap from "gsap";
 
 const AvatarHead = (props) => {
   const { nodes } = useGLTF("/models/head.glb");
@@ -28,6 +29,16 @@ const AvatarHead = (props) => {
 
   const headRef = useRef();
 
+  useEffect(() => {
+    if (!headRef.current) return;
+    gsap.to(headRef.current.scale, {
+      x: 1,
+      y: 1,
+      z: 1,
+      delay: 2.5,
+    });
+  }, []);
+
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime();
     headRef.current.rotation.z = Math.sin(t * 2) * 0.05;
@@ -35,14 +46,13 @@ const AvatarHead = (props) => {
 
   return (
     <group {...props} dispose={null}>
-      <group ref={headRef}>
+      <group ref={headRef} scale={0}>
         <mesh
           name="eggy_head"
           castShadow
           receiveShadow
           geometry={nodes.eggy_head.geometry}
           material={AvatarMaterial}
-          position={[0, 1.1233639717, 0.0418835282]}
           userData={{ name: "eggy_head" }}
           frustumCulled={true}
         />
@@ -52,7 +62,6 @@ const AvatarHead = (props) => {
           receiveShadow
           geometry={nodes.hat.geometry}
           material={AvatarMaterial}
-          position={[0, 1.1233639717, 0.0418835282]}
           userData={{ name: "hat" }}
           frustumCulled={false}
         />
@@ -63,13 +72,12 @@ const AvatarHead = (props) => {
           receiveShadow
           geometry={nodes.hair.geometry}
           material={AvatarMaterial}
-          position={[0, 1.1233639717, 0.0418835282]}
           userData={{ name: "hair" }}
           frustumCulled={true}
         />
       </group>
       <mesh
-        position={[0, 0.8, 0]}
+        position={[0, -0.25, 0]}
         rotation={[-1.5, 0, 0]}
         scale={2}
         receiveShadow

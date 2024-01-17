@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import Crayon from "./Crayon";
-import { Float } from "@react-three/drei";
+import { Float, Text } from "@react-three/drei";
 import gsap from "gsap";
 
 const Crayons = (props) => {
@@ -89,6 +89,17 @@ const Crayons = (props) => {
 
   return (
     <group {...props} dispose={null}>
+      <Text
+        color="#afafaf"
+        anchorX="center"
+        anchorY="middle"
+        // rotation-y={Math.PI}
+        position-y={2.5}
+        font="/Inter-Bold.woff"
+        scale={0.3}
+      >
+        Toggle Me
+      </Text>
       <Float>
         <group rotation={[0, 0, -0.5]} position={[4, 2, 0]} scale={1.5}>
           <Crayon

@@ -4,7 +4,7 @@ Command: npx gltfjsx@6.1.4 public/models/computer.glb --transform --precision=10
 */
 
 import React, { memo, useEffect, useMemo, useRef, useState } from "react";
-import { Plane, useGLTF, useTexture } from "@react-three/drei";
+import { Plane, Text, useGLTF, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import gsap from "gsap";
 
@@ -49,6 +49,17 @@ const Computer = (props) => {
 
   return (
     <group {...props} dispose={null} onClick={handleClick}>
+      <Text
+        color="#afafaf"
+        anchorX="center"
+        anchorY="middle"
+        // rotation-y={Math.PI}
+        position-y={0.8}
+        font="/Inter-Bold.woff"
+        scale={0.1}
+      >
+        Toggle Me
+      </Text>
       <group>
         <group scale={1.175} position={[-0.15, 0.175, -0.25]}>
           <Plane

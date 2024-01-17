@@ -2,9 +2,10 @@ import { Html, Scroll, useScroll } from "@react-three/drei";
 import React, { Fragment, useEffect, useRef, useState } from "react";
 import "./Pages.css";
 import Page from "./Page";
-import PagesData from "./PagesData";
+import pagesLogic from "./PagesData";
 
 const Pages = () => {
+  const { PagesData } = pagesLogic();
   return (
     <Fragment>
       <Scroll html style={{ width: "100%" }}>

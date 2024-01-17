@@ -72,8 +72,8 @@ const Clay = (props) => {
     <group {...props}>
       <mesh
         ref={sphereRef}
-        onPointerEnter={handlePointerHandle}
-        onPointerOut={handlePointerOutHandle}
+        onPointerDown={handlePointerHandle}
+        onPointerUp={handlePointerOutHandle}
       >
         <sphereGeometry args={[3, 50, 50]} />
         <shaderMaterial
