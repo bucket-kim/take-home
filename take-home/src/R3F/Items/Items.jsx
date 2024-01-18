@@ -1,7 +1,6 @@
-import { Box, Float, Scroll, useIntersect, useScroll } from "@react-three/drei";
-import { useFrame, useThree } from "@react-three/fiber";
-import React, { Fragment, memo, useEffect } from "react";
-import * as THREE from "three";
+import { Scroll } from "@react-three/drei";
+import { useThree } from "@react-three/fiber";
+import { memo } from "react";
 import AvatarHead from "./AvatarHead/AvatarHead";
 import Lighting from "../Lighting";
 import Crayons from "./Crayons/Crayons";
@@ -11,7 +10,6 @@ import Lego from "./Lego/Lego";
 import Computer from "./Computer/Computer";
 import Parents from "./Parents/Parents";
 import Countries from "./Countries/Countries";
-import GameImage from "./GameImage/GameImage";
 import Virus from "./Virus/Virus";
 import School from "./School/School";
 import Tech from "./Tech/Tech";
