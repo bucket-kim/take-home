@@ -6,7 +6,7 @@ Command: npx gltfjsx@6.1.4 public/models/vscode.glb --transform --precision=10 -
 import React, { memo, useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 
-const Vscode = (props) => {
+const VsCodeModel = (props) => {
   const { nodes, materials } = useGLTF("/models/vscode-transformed.glb");
   return (
     <group {...props} dispose={null}>
@@ -102,6 +102,6 @@ const Vscode = (props) => {
   );
 };
 
-export default memo(Vscode);
+export default memo(VsCodeModel);
 
 useGLTF.preload("/models/vscode-transformed.glb");

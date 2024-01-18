@@ -13,7 +13,7 @@ import Countries from "./Countries/Countries";
 import Virus from "./Virus/Virus";
 import School from "./School/School";
 import Tech from "./Tech/Tech";
-import VsCode from "./VscodeModel/VsCode";
+import VsCodeModel from "./VsCodeModel/VsCodeModel";
 import Engineering from "./Engineering/Engineering";
 import VidPlane from "./VidPlane/VidPlane";
 
@@ -79,7 +79,7 @@ const Items = () => {
         scale={w <= 5 ? 0.8 : 1.2}
       />
       {/* Page 16 */}
-      <VsCode
+      <VsCodeModel
         position={[w <= 5 ? 0 : w / 4.5, w <= 5 ? -h * 12.8 : -h * 13, 0]}
         scale={w <= 5 ? 1 : 2.5}
       />

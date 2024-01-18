@@ -41,7 +41,7 @@ const HeaderImage = () => {
   return (
     <div className="header-logo">
       <img
-        src="/public/Image/ViteLogo.png"
+        src="/Image/ViteLogo.png"
         alt=""
         className="header-logo"
         onPointerDown={handlePoiterUp}
